@@ -12,5 +12,9 @@ namespace WebApplication1.Data
         }
 
         public DbSet<Movie> Movie { get; set; }
+
+        public DbSet<Movie> Category { get; set; }
+
+        public DbSet<WebApplication1.Models.Category> Category_1 { get; set; }
     }
 }
