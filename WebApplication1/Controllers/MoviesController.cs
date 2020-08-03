@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
 using WebApplication1.Models;
 
-namespace WebApplication1.Controllers
+namespace MvcMovies.Controllers
 {
     public class MoviesController : Controller
     {
-        private readonly MvcMovieContext _context;
+        private readonly MvcMovieContextWeek2 _context;
 
-        public MoviesController(MvcMovieContext context)
+        public MoviesController(MvcMovieContextWeek2 context)
         {
             _context = context;
         }
@@ -54,7 +54,7 @@ namespace WebApplication1.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public async Task<IActionResult> Create([Bind("Id,Name,ReleaseDate,Director,ContactEmailAddress,Price")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace WebApplication1.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,ReleaseDate,Director,ContactEmailAddress,Price")] Movie movie)
         {
             if (id != movie.Id)
             {

@@ -4,9 +4,9 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Data
 {
-    public class MvcMovieContext : DbContext
+    public class MvcMovieContextWeek2 : DbContext
     {
-        public MvcMovieContext(DbContextOptions<MvcMovieContext> options)
+        public MvcMovieContextWeek2(DbContextOptions<MvcMovieContextWeek2> options)
             : base(options)
         {
         }
