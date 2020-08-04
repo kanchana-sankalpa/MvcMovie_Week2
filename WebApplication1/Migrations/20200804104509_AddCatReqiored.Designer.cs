@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication1.Data;
 
 namespace MvcMovies.Migrations
 {
     [DbContext(typeof(MvcMovieContextWeek2))]
-    partial class MvcMovieContextWeek2ModelSnapshot : ModelSnapshot
+    [Migration("20200804104509_AddCatReqiored")]
+    partial class AddCatReqiored
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

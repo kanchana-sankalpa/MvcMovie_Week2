@@ -22,7 +22,8 @@ namespace MvcMovies.Controllers
         // GET: Movies
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Movie.ToListAsync());
+            var mvcMovieContextWeek2 = _context.Movie.Include(m => m.Category);
+            return View(await mvcMovieContextWeek2.ToListAsync());
         }
 
         // GET: Movies/Details/5
@@ -34,6 +35,7 @@ namespace MvcMovies.Controllers
             }
 
             var movie = await _context.Movie
+                .Include(m => m.Category)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (movie == null)
             {
@@ -46,6 +48,7 @@ namespace MvcMovies.Controllers
         // GET: Movies/Create
         public IActionResult Create()
         {
+            ViewData["CategoryId"] = new SelectList(_context.Category_1, "Id", "Name");
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace MvcMovies.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,ReleaseDate,Director,ContactEmailAddress,Price")] Movie movie)
+        public async Task<IActionResult> Create([Bind("Id,Name,ReleaseDate,Director,ContactEmailAddress,CategoryId")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +65,7 @@ namespace MvcMovies.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CategoryId"] = new SelectList(_context.Category_1, "Id", "Name", movie.CategoryId);
             return View(movie);
         }
 
@@ -78,6 +82,7 @@ namespace MvcMovies.Controllers
             {
                 return NotFound();
             }
+            ViewData["CategoryId"] = new SelectList(_context.Category_1, "Id", "Name", movie.CategoryId);
             return View(movie);
         }
 
@@ -86,7 +91,7 @@ namespace MvcMovies.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,ReleaseDate,Director,ContactEmailAddress,Price")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,ReleaseDate,Director,ContactEmailAddress,CategoryId")] Movie movie)
         {
             if (id != movie.Id)
             {
@@ -113,6 +118,7 @@ namespace MvcMovies.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CategoryId"] = new SelectList(_context.Category_1, "Id", "Name", movie.CategoryId);
             return View(movie);
         }
 
@@ -125,6 +131,7 @@ namespace MvcMovies.Controllers
             }
 
             var movie = await _context.Movie
+                .Include(m => m.Category)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (movie == null)
             {
