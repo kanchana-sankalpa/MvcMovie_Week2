@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using MvcMovies.Models;
 
 namespace WebApplication1.Models
 {
@@ -25,6 +26,9 @@ namespace WebApplication1.Models
         [RegularExpression(@"^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-‌​]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$", ErrorMessage = "Email is not valid")]
 
         public string ContactEmailAddress { get; set; }
+
+
+        public Languages Languages { get; set; }
 
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
