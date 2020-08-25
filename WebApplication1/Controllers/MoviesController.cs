@@ -12,9 +12,9 @@ namespace MvcMovies.Controllers
 {
     public class MoviesController : Controller
     {
-        private readonly MvcMovieContextWeek2 _context;
+        private readonly MvcMovieContextWeek4 _context;
 
-        public MoviesController(MvcMovieContextWeek2 context)
+        public MoviesController(MvcMovieContextWeek4 context)
         {
             _context = context;
         }
@@ -57,7 +57,7 @@ namespace MvcMovies.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,ReleaseDate,Director,ContactEmailAddress,Languages,CategoryId")] Movie movie)
+        public async Task<IActionResult> Create([Bind("Id,Name,ReleaseDate,Director,ContactEmailAddress,Languages,CategoryId")] MovieViewModel movie)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace MvcMovies.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,ReleaseDate,Director,ContactEmailAddress,Languages,CategoryId")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,ReleaseDate,Director,ContactEmailAddress,Languages,CategoryId")] MovieViewModel movie)
         {
             if (id != movie.Id)
             {

@@ -12,9 +12,9 @@ namespace MvcMovies.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly MvcMovieContextWeek2 _context;
+        private readonly MvcMovieContextWeek4 _context;
 
-        public CategoryController(MvcMovieContextWeek2 context)
+        public CategoryController(MvcMovieContextWeek4 context)
         {
             _context = context;
         }
@@ -54,7 +54,7 @@ namespace MvcMovies.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Code")] Category category)
+        public async Task<IActionResult> Create([Bind("Id,Name,Code")] CategoryViewModel category)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace MvcMovies.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Code")] Category category)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Code")] CategoryViewModel category)
         {
             if (id != category.Id)
             {

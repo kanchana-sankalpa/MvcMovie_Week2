@@ -26,8 +26,8 @@ namespace WebApplication1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<MvcMovieContextWeek2>(options =>
-           options.UseSqlServer(Configuration.GetConnectionString("MvcMovieContextWeek2")));
+            services.AddDbContext<MvcMovieContextWeek4>(options =>
+           options.UseSqlServer(Configuration.GetConnectionString("MvcMovieContextWeek4")));
 
         }
 
