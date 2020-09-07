@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ebApplication1._BAL.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using WebApplication1._BAL.Models;
@@ -111,5 +113,70 @@ namespace WebApplication1._DAL.Services
         {
             throw new System.NotImplementedException();
         }
+
+
+
+        public CategoryBLLModel fetchcategory(long id)
+        {
+            var efmodel = context.Category.Find(id);
+            var returnobject = new CategoryBLLModel()
+            {
+                Name = efmodel.Name,
+                Code = efmodel.Code,
+                Id= efmodel.Id,
+            };
+
+            return returnobject;
+        }
+
+        public CategoryBLLModel fetchcategory(string codevalue)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CategoryBLLModel> fetchallcategory()
+        {
+            var efModel = context.Category.ToList();
+            var returnObject = new List<CategoryBLLModel>();
+
+            foreach (var item in efModel)
+            {
+                returnObject.Add(new CategoryBLLModel()
+                {
+                    Name = item.Name,
+                    Code = item.Code,
+                    Id = item.Id,
+                });
+            }
+
+            return returnObject ;
+        }
+
+        public void deletecategory(long id)
+        {
+            var efmodel = context.Category.Find(id);
+            context.Category.Remove(efmodel);
+            context.SaveChanges();
+        }
+
+        public void updatecategory(CategoryBLLModel model)
+        {
+            var efmodel = context.Category.Find(model.Id);
+            efmodel.Code = model.Code;
+            efmodel.Name = model.Name;
+            context.SaveChanges();
+        }
+
+        public void AddCategory(CategoryBLLModel model)
+        {
+            var efModel = new Category()
+            {
+                Code = model.Code,
+                Name = model.Name,
+                Id = model.Id
+            };
+            context.Category.Add(efModel);
+            context.SaveChanges();
+        }
     }
-    }
+}

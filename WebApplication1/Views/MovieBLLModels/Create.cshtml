@@ -1,4 +1,4 @@
-﻿@model WebApplication1.Models.Movie
+﻿@model WebApplication1._BAL.Models.MovieBLLModel
 
 @{
     ViewData["Title"] = "Create";
@@ -6,7 +6,7 @@
 
 <h1>Create</h1>
 
-<h4>Movie</h4>
+<h4>MovieBLLModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -31,15 +31,6 @@
                 <label asp-for="ContactEmailAddress" class="control-label"></label>
                 <input asp-for="ContactEmailAddress" class="form-control" />
                 <span asp-validation-for="ContactEmailAddress" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Languages" class="control-label"></label>
-                <select asp-for="Languages" class="form-control" asp-items="Html.GetEnumSelectList<MvcMovies.Models.Languages>()"></select>
-                <span asp-validation-for="Languages" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

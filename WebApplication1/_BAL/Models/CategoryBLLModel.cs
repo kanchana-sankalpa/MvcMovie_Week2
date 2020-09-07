@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebApplication1.Models
+namespace ebApplication1._BAL.Models
 {
-    public class Category
+    public class CategoryBLLModel
     {
         public int Id { get; set; }
 

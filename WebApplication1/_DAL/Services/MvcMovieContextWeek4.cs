@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebApplication1._DAL.Models;
 using WebApplication1.Models;      
+using WebApplication1._BAL.Models;
 
 
 namespace WebApplication1._DAL.Service
@@ -14,8 +15,10 @@ namespace WebApplication1._DAL.Service
 
         public DbSet<Movie> Movie { get; set; }
 
-       // public DbSet<MovieViewModel> Category { get; set; }
+        //public DbSet<WebApplication1._BAL.Models.MovieBLLModel> MovieBLLModel { get; set; }
 
-       // public DbSet<WebApplication1.Models.CategoryViewModel> Category_1 { get; set; }
+        public DbSet<Category> Category { get; set; }
+
+       //public DbSet<WebApplication1.Models.CategoryViewModel> Category_1 { get; set; }
     }
 }
